@@ -10,7 +10,7 @@
   ## Usage
   Add this script to any existing mirror or use one of the included mirror prefabs.
  
- Setting the culling distance to 0 disables the culling behaviour.
+ Setting the culling distance to 0 will disable the culling behaviour.
 
 
 # Examples
