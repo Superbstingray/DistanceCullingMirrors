@@ -22,3 +22,5 @@
 ### Nothing on this mirror is being updated. This is a normal mirror that has an internal culling distance set for players.
 
 https://user-images.githubusercontent.com/74171114/130367299-b0a98aae-1b92-4a40-9026-975f3ac10e57.mp4
+
+The script will run its function when the player first views any given mirror and will disable itself once it has run.
