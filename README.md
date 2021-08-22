@@ -17,4 +17,8 @@
 
 ![DCM](https://user-images.githubusercontent.com/74171114/130367351-38c68131-0916-4820-b067-54d5e257602a.png)
 
+
+
+### Nothing on this mirror is being updated. This is a normal mirror that has an internal cull distance set.
+
 https://user-images.githubusercontent.com/74171114/130367299-b0a98aae-1b92-4a40-9026-975f3ac10e57.mp4
