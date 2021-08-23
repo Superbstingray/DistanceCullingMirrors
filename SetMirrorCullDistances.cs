@@ -39,15 +39,15 @@ public class MirrorCullDistances : UdonSharp.UdonSharpBehaviour
 
 			// Update Player Layers Culling Distances
 			if ((PlayerCullingDistance != 0F)) {
-			LayerCullDistances[9] = PlayerCullingDistance;  // Player
-			LayerCullDistances[10] = PlayerCullingDistance; // PlayerLocal
-			LayerCullDistances[18] = PlayerCullingDistance; // MirrorReflection
+				LayerCullDistances[9] = PlayerCullingDistance;  // Player
+				LayerCullDistances[10] = PlayerCullingDistance; // PlayerLocal
+				LayerCullDistances[18] = PlayerCullingDistance; // MirrorReflection
 			}
 			// Update Pickup Related Layer Culling Distances
 			if ((PickupCullingDistance != 0F)) {
-			LayerCullDistances[8] = PickupCullingDistance;  // Interactive
-			LayerCullDistances[13] = PickupCullingDistance; // Pickup
-			LayerCullDistances[14] = PickupCullingDistance; // PickupNoEnvironment
+				LayerCullDistances[8] = PickupCullingDistance;  // Interactive
+				LayerCullDistances[13] = PickupCullingDistance; // Pickup
+				LayerCullDistances[14] = PickupCullingDistance; // PickupNoEnvironment
 			}
 			// Set The Mirrors Culling Distances From The LayerCullDistances Array
 			MirrorCamera.layerCullDistances = LayerCullDistances;
