@@ -17,6 +17,7 @@
 
 
 # Examples
+Settings used for the video example.
 
 ![DCM](https://user-images.githubusercontent.com/74171114/130367351-38c68131-0916-4820-b067-54d5e257602a.png)
 
