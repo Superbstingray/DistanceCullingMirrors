@@ -1,4 +1,4 @@
-﻿
+
 using UnityEngine;
 using VRC.SDKBase;
 using VRC.SDK3.Components;
@@ -10,12 +10,14 @@ public class MirrorCullDistances : UdonSharp.UdonSharpBehaviour
 	public float PlayerCullingDistance = 10F;
 
 	[Tooltip("A Value Of 0 Will Disable Culling Behaviour")]
-	public float PickupCullingDistance = 20F;
+	public float PickupCullingDistance = 0F;
 
 	[Tooltip("A Value Of 0 Will Disable Culling Behaviour")]
-	public float OtherCullingDistances = 100F;
+	public float OtherCullingDistances = 0F;
 
-	private float[] CullDistances;  
+	[Tooltip("Set Individual Layer Culling Distances")]
+	public float[] LayerCullDistances;  
+
 	private Camera MirrorCamera;
 	private GameObject MirrorCamObject;
 
@@ -27,24 +29,27 @@ public class MirrorCullDistances : UdonSharp.UdonSharpBehaviour
 		// Wait For Valid Mirror Camera 
 		if (VRC.SDKBase.Utilities.IsValid(MirrorCamObject)) 
 		{
-			// Set Float Array to 32 Length, This Is The Number Of Unity Layers
-			CullDistances = new float[32];
+			// Set Float Array to 32 Length If It Isn't Already a 32 Length Array
+			if ((LayerCullDistances.Length != 32)) { LayerCullDistances = new float[32]; }
 
 			// Set All Undefined Layers Distances
-			for(int i=0; i<32; i++) { CullDistances[i] = OtherCullingDistances; }
+			for(int i=0; i<32; i++)
+				if ((LayerCullDistances[i] == 0F)) { LayerCullDistances[i] = OtherCullingDistances; }
 
 			// Update Player Layers Culling Distances
-			CullDistances[9] = PlayerCullingDistance;  // Player
-			CullDistances[10] = PlayerCullingDistance; // PlayerLocal
-			CullDistances[18] = PlayerCullingDistance; // MirrorReflection
-
+			if ((PlayerCullingDistance != 0F)) {
+			LayerCullDistances[9] = PlayerCullingDistance;  // Player
+			LayerCullDistances[10] = PlayerCullingDistance; // PlayerLocal
+			LayerCullDistances[18] = PlayerCullingDistance; // MirrorReflection
+			}
 			// Update Pickup Related Layer Culling Distances
-			CullDistances[8] = PickupCullingDistance;  // Interactive
-			CullDistances[13] = PickupCullingDistance; // Pickup
-			CullDistances[14] = PickupCullingDistance; // PickupNoEnvironment
-
-			// Set The Mirrors Culling Distances From The CullDistances Array
-			MirrorCamera.layerCullDistances = CullDistances;
+			if ((PickupCullingDistance != 0F)) {
+			LayerCullDistances[8] = PickupCullingDistance;  // Interactive
+			LayerCullDistances[13] = PickupCullingDistance; // Pickup
+			LayerCullDistances[14] = PickupCullingDistance; // PickupNoEnvironment
+			}
+			// Set The Mirrors Culling Distances From The LayerCullDistances Array
+			MirrorCamera.layerCullDistances = LayerCullDistances;
 			// Set The Mirrors Culling Type To Spherical
 			MirrorCamera.layerCullSpherical = true;
 
