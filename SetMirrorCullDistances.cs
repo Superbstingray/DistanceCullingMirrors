@@ -13,7 +13,7 @@ public class MirrorCullDistances : UdonSharp.UdonSharpBehaviour
 	public float PickupCullingDistance = 20F;
 
 	[Tooltip("A Value Of 0 Will Disable Culling Behaviour")]
-	public float OtherCullingDistances = 100F;
+	public float OtherCullingDistances = 75F;
 
 	[Tooltip("Set Individual Layer Culling Distances")]
 	public float[] LayerCullDistances;  
@@ -33,22 +33,32 @@ public class MirrorCullDistances : UdonSharp.UdonSharpBehaviour
 			// Set Float Array to 32 Length If It Isn't Already a 32 Length Array
 			if ((LayerCullDistances.Length != 32)) { LayerCullDistances = new float[32]; }
 
-			// Set All Undefined Layers Distances
+			// Update Player Layers Culling Distances 
+			if ((LayerCullDistances[9] == 0F)) 
+			{ LayerCullDistances[9] = PlayerCullingDistance;  // Player
+			}
+			if ((LayerCullDistances[10] == 0F)) 
+			{ LayerCullDistances[10] = PlayerCullingDistance; // PlayerLocal
+			}
+			if ((LayerCullDistances[18] == 0F)) 
+			{ LayerCullDistances[18] = PlayerCullingDistance; // MirrorReflection
+			}
+
+			// Update Pickup Related Layer Culling Distances
+			if ((LayerCullDistances[8] == 0F)) 
+			{ LayerCullDistances[8] = PickupCullingDistance;  // Interactive
+			}
+			if ((LayerCullDistances[13] == 0F)) 
+			{ LayerCullDistances[13] = PickupCullingDistance; // Pickup
+			}
+			if ((LayerCullDistances[14] == 0F)) 
+			{ LayerCullDistances[14] = PickupCullingDistance; // PickupNoEnvironment
+			}
+
+			// Set All Undefined Layers Distances To OtherCullingDistances
 			for(int i=0; i<32; i++)
 				if ((LayerCullDistances[i] == 0F)) { LayerCullDistances[i] = OtherCullingDistances; }
 
-			// Update Player Layers Culling Distances
-			if ((PlayerCullingDistance != 0F)) {
-				LayerCullDistances[9] = PlayerCullingDistance;  // Player
-				LayerCullDistances[10] = PlayerCullingDistance; // PlayerLocal
-				LayerCullDistances[18] = PlayerCullingDistance; // MirrorReflection
-			}
-			// Update Pickup Related Layer Culling Distances
-			if ((PickupCullingDistance != 0F)) {
-				LayerCullDistances[8] = PickupCullingDistance;  // Interactive
-				LayerCullDistances[13] = PickupCullingDistance; // Pickup
-				LayerCullDistances[14] = PickupCullingDistance; // PickupNoEnvironment
-			}
 			// Set The Mirrors Culling Distances From The LayerCullDistances Array
 			MirrorCamera.layerCullDistances = LayerCullDistances;
 			// Set The Mirrors Culling Type To Spherical
@@ -56,7 +66,7 @@ public class MirrorCullDistances : UdonSharp.UdonSharpBehaviour
 
 			// Update Internal Mirror Camera Name So Mirrors With Identical Names Can Update Properly
 			MirrorCamObject.name = "MirrorCamUpdated";
-		 
+
 			//Disable This Behaviour Once Completed
 			gameObject.GetComponent<MirrorCullDistances>().enabled = false;
 		}
