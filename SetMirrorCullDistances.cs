@@ -10,10 +10,10 @@ public class MirrorCullDistances : UdonSharp.UdonSharpBehaviour
 	public float PlayerCullingDistance = 10F;
 
 	[Tooltip("A Value Of 0 Will Disable Culling Behaviour")]
-	public float PickupCullingDistance = 0F;
+	public float PickupCullingDistance = 20F;
 
 	[Tooltip("A Value Of 0 Will Disable Culling Behaviour")]
-	public float OtherCullingDistances = 0F;
+	public float OtherCullingDistances = 100F;
 
 	private float[] CullDistances;  
 	private Camera MirrorCamera;
