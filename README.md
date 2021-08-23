@@ -2,6 +2,8 @@
 # DistanceCullingMirrors
 ### Udon script that exposes additional options for mirrors giving the ability to set distance based culling for players, interactables and optionally all other existing layers.
 
+### This is essentially adding a far clip distance to mirrors and setting it per layer.
+
  ## Requirements
  
  * [VRCSDK3-Udon](https://vrchat.com/home/download) v.2021.08.04.15.07+
