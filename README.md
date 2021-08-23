@@ -28,6 +28,6 @@ https://user-images.githubusercontent.com/74171114/130367299-b0a98aae-1b92-4a40-
 
 ### The script will run its function when the player first views any given mirror and will disable itself once it has run.
 
-## Manually setting culling distances in the layer array. Elements correspond to layer number.
+### Manually setting culling distances in the layer array. Elements correspond to layer number.
 
 ![ArrayExample](https://user-images.githubusercontent.com/74171114/130407168-28779920-e812-4dd8-a408-860c96179c9f.png)
