@@ -13,7 +13,7 @@
  * [Merlins Udon Sharp](https://github.com/MerlinVR/UdonSharp) (For U# Version)
  * Unity 2019.4.29f1
   ## Usage
-  Add this script to any existing mirror or use one of the included mirror prefabs.
+  Add this script to any existing mirror or use the included mirror prefab.
  
  Setting the culling distance to 0 will disable culling behaviour for that layer.
 
@@ -29,10 +29,11 @@ Settings used for the video example.
 
 https://user-images.githubusercontent.com/74171114/130367299-b0a98aae-1b92-4a40-9026-975f3ac10e57.mp4
 
-### The script will run its function when the player first views any given mirror and will disable itself once it has run.
 
-### Manually setting culling distances in the layer array. Elements correspond to layer number.
-
-![ArrayExample](https://user-images.githubusercontent.com/74171114/130407168-28779920-e812-4dd8-a408-860c96179c9f.png)
+## Manually setting culling distances in the layer array.
 
 https://user-images.githubusercontent.com/74171114/130734783-cf06b9c2-bc15-45b6-8e38-fbf2d20dcc90.mp4
+
+## Elements correspond to layer number.
+
+![ArrayExample](https://user-images.githubusercontent.com/74171114/130407168-28779920-e812-4dd8-a408-860c96179c9f.png)
