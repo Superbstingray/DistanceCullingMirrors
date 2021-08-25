@@ -3,7 +3,7 @@
 
 
 # DistanceCullingMirrors
-### Udon script that exposes additional options for mirrors giving the ability to set distance based culling for players, interactables and optionally all other existing layers, this should help in creating more optimized mirrors.
+### Udon script that exposes additional options for mirrors giving the ability to set distance based culling for players, interactables and optionally all other layers, this will help in creating more optimized mirrors.
 
 ### This is essentially adding an adjustable far clip distance to mirrors with the ability to set it per layer.
 
