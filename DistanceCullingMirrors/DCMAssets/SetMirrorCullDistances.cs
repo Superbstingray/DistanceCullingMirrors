@@ -66,7 +66,7 @@ namespace superbstingray
 				for(int i=0; i<32; i++)
 					if ((LayerCullDistances[i] == 0F)) { LayerCullDistances[i] = OtherCullingDistances; }
 
-				// Update LayerCullDistances Properties
+				// Update CullDistances Properties & Values
 				MirrorCamera.layerCullDistances = LayerCullDistances;
 				MirrorCamera.layerCullSpherical = true;
 
