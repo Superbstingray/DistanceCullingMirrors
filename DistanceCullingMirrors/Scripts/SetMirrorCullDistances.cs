@@ -1,4 +1,4 @@
-﻿
+
 using UnityEngine;
 using VRC.SDKBase;
 using VRC.SDK3.Components;
@@ -9,20 +9,20 @@ namespace superbstingray
 	[UdonBehaviourSyncMode(BehaviourSyncMode.NoVariableSync)]
 	public class SetMirrorCullDistances : UdonSharp.UdonSharpBehaviour 
 	{
-		[Tooltip("A Value Of 0 Will Disable Culling Behaviour")]
-		public float PlayerCullingDistance = 10F;
+	[Tooltip("A Value Of 0 Will Disable Culling Behaviour")]
+	public float PlayerCullingDistance = 10F;
 
-		[Tooltip("A Value Of 0 Will Disable Culling Behaviour")]
-		public float PickupCullingDistance = 20F;
+	[Tooltip("A Value Of 0 Will Disable Culling Behaviour")]
+	public float PickupCullingDistance = 20F;
 
-		[Tooltip("A Value Of 0 Will Disable Culling Behaviour")]
-		public float OtherCullingDistances = 75F;
+	[Tooltip("A Value Of 0 Will Disable Culling Behaviour")]
+	public float OtherCullingDistances = 75F;
 
-		[Tooltip("Set Individual Layer Culling Distances")]
-		public float[] LayerCullDistances;  
+	[Tooltip("Set Individual Layer Culling Distances")]
+	public float[] LayerCullDistances;
 
-		private Camera MirrorCamera;
-		private GameObject MirrorCamObject;
+	private GameObject MirrorCamObject;
+	private Camera MirrorCamera;
 
 		void OnValidate()
 		{
@@ -66,14 +66,14 @@ namespace superbstingray
 				for(int i=0; i<32; i++)
 					if ((LayerCullDistances[i] == 0F)) { LayerCullDistances[i] = OtherCullingDistances; }
 
-				// Update CullingDistance Properties & Values
+				// Update Camera Culling Properties & Values
 				MirrorCamera.layerCullDistances = LayerCullDistances;
 				MirrorCamera.layerCullSpherical = true;
 
 				// Update MirrorCam Name to Prevent Naming Conflicts
-				MirrorCamObject.name = string.Format("{0}{1}", MirrorCamObject.name, "DCMUpdated");
+				MirrorCamObject.name = string.Format("{0}{1}", gameObject.name, "_DCM");
 
-				//Log Mirror Update
+				// Log Mirror Update
 				Debug.Log(string.Format("[<color=yellow>DCM</color>] [<color=orange>{0}</color>] {1}", gameObject.name, "Applying Mirror Culling Distances"));
 				Debug.Log(string.Format("[<color=yellow>DCM</color>] {0} <color=lightblue>{1}m</color>", "Player Culling Distance", PlayerCullingDistance));
 				Debug.Log(string.Format("[<color=yellow>DCM</color>] {0} <color=lightblue>{1}m</color>", "Pickups Culling Distance", PickupCullingDistance));
