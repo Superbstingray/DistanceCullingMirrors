@@ -18,4 +18,8 @@ Use one of the provided prefabs or add the script to any existing mirror. If add
 
 Setting the culling distance to 0 will disable culling behaviour for that layer.
 
-Set the Player, Pickup or Other culling distances or manually set distances per layer in Layer Culling Distances. Setting culling distance values per layer will override the values defined by the basic initial variables.
+Set the Player, Pickup or Other culling distances or manually set distances per layer in Layer Culling Distances.
+
+Setting culling distance values per layer will override the values defined by the basic initial variables.
+
+
