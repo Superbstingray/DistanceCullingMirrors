@@ -31,8 +31,8 @@ namespace superbstingray
 		}
 		public void OnEnable()
 		{
-			SendCustomEventDelayedSeconds("_MirrorUpdate", 0.1F);
 			if  (LayerCullDistances.Length != 32) { LayerCullDistances = new float[32]; }
+			SendCustomEvent("_MirrorUpdate");
 		}
 		public void _MirrorUpdate()
 		{
