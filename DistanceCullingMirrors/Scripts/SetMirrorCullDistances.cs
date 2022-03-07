@@ -32,6 +32,7 @@ namespace superbstingray
 		public void OnEnable()
 		{
 			this.SendCustomEventDelayedSeconds("_MirrorUpdate", 0.1F, VRC.Udon.Common.Enums.EventTiming.Update);
+			if  (LayerCullDistances.Length != 32) { LayerCullDistances = new float[32]; }
 		}
 		public void _MirrorUpdate()
 		{
