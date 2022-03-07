@@ -24,6 +24,11 @@ namespace superbstingray
 		private Camera MirrorCamera;
 		private GameObject MirrorCamObject;
 
+		void OnValidate()
+		{
+			// Force Initialize & Set Float Array to 32 Length
+			if  (LayerCullDistances == null) { LayerCullDistances = new float[32]; }
+		}
 		public void OnEnable()
 		{
 			this.SendCustomEventDelayedSeconds("MirrorUpdate", 0.1F, VRC.Udon.Common.Enums.EventTiming.Update);
@@ -35,9 +40,6 @@ namespace superbstingray
 			if (VRC.SDKBase.Utilities.IsValid(MirrorCamObject))
 			{
 				MirrorCamera = MirrorCamObject.GetComponent<Camera>();
-
-				// Force Float Array to 32 Length
-				if ((LayerCullDistances.Length != 32)) { LayerCullDistances = new float[32]; }
 
 				// Update Player Layers Culling Distances 
 				if ((LayerCullDistances[9] == 0F)) // Player
@@ -72,7 +74,7 @@ namespace superbstingray
 				MirrorCamObject.name = string.Format("{0}{1}", MirrorCamObject.name, "DCMUpdated");
 
 				//Log Mirror Update
-				Debug.Log(string.Format("[<color=yellow>DCM</color>] [<color=orange>{0}</color>] <color=white>{1}</color>", gameObject.name, "Applying Mirror Culling Distances"));
+				Debug.Log(string.Format("[<color=yellow>DCM</color>] [<color=orange>{0}</color>] {1}", gameObject.name, "Applying Mirror Culling Distances"));
 				Debug.Log(string.Format("[<color=yellow>DCM</color>] {0} <color=lightblue>{1}m</color>", "Player Culling Distance", PlayerCullingDistance));
 				Debug.Log(string.Format("[<color=yellow>DCM</color>] {0} <color=lightblue>{1}m</color>", "Pickups Culling Distance", PickupCullingDistance));
 				Debug.Log(string.Format("[<color=yellow>DCM</color>] {0} <color=lightblue>{1}m</color>", "Other Culling Distances", OtherCullingDistances));
