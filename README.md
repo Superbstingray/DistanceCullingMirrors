@@ -8,7 +8,7 @@
  ## Requirements
  
  * [VRCSDK3-Udon](https://vrchat.com/home/download) v.2021.08.04.15.07+
- * [VRChat-Community Merlins Udon Sharp](https://github.com/vrchat-community/UdonSharp) (For U# Version)
+ * [VRChat-Community Merlins Udon Sharp](https://github.com/vrchat-community/UdonSharp)
  * Unity 2019.4.29f1+
   ## Usage
   Add this script to any existing mirror or use the included mirror prefab.
