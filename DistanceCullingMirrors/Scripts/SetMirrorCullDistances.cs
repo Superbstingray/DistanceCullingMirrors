@@ -80,7 +80,7 @@ namespace superbstingray
 				gameObject.GetComponent<SetMirrorCullDistances>().enabled = false;
 
 			} else
-			{	// Retry if Mirror Camera Wasn't Initialized 
+			{	// Retry if Mirror Camera Wasn't Initialized f
 				SendCustomEventDelayedSeconds("_MirrorUpdate", 1F);
 			}
 		}
