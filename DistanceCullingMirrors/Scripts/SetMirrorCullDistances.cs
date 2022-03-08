@@ -40,9 +40,7 @@ namespace superbstingray
 			if  (MirrorCamObject == null) { MirrorCamObject = GameObject.Find(string.Format("{0}{1}", "MirrorCam", gameObject.name)); }
 			if (Utilities.IsValid(MirrorCamObject))
 			{
-				MirrorCamera = MirrorCamObject.GetComponent<Camera>();
-
-				// Update Player Layers Culling Distances 
+				// Update Specified Layers 
 				if ((LayerCullDistances[9] == 0F)) // Player
 				{ LayerCullDistances[9] = PlayerCullingDistance;
 				}
@@ -52,7 +50,6 @@ namespace superbstingray
 				if ((LayerCullDistances[18] == 0F)) // MirrorReflection
 				{ LayerCullDistances[18] = PlayerCullingDistance;
 				}
-				// Update Pickup Related Layer Culling Distances
 				if ((LayerCullDistances[8] == 0F)) // Interactive
 				{ LayerCullDistances[8] = PickupCullingDistance;
 				}
@@ -62,17 +59,15 @@ namespace superbstingray
 				if ((LayerCullDistances[14] == 0F)) // PickupNoEnvironment
 				{ LayerCullDistances[14] = PickupCullingDistance;
 				}
-
-				// Set Undefined Layers Distances to OtherCullingDistances
+				// Update Unspecified Layers Distances to OtherCullingDistances
 				for(int i=0; i<32; i++)
 					if ((LayerCullDistances[i] == 0F)) { LayerCullDistances[i] = OtherCullingDistances; }
 
-				// Update Camera Culling Properties & Values
+				// Update Camera Name & Culling Properties
+				MirrorCamObject.name = string.Format("{0}{1}", gameObject.name, "_DCM");
+				MirrorCamera = MirrorCamObject.GetComponent<Camera>();
 				MirrorCamera.layerCullDistances = LayerCullDistances;
 				MirrorCamera.layerCullSpherical = true;
-
-				// Update MirrorCam Name to Prevent Naming Conflicts
-				MirrorCamObject.name = string.Format("{0}{1}", gameObject.name, "_DCM");
 
 				// Log Mirror Update
 				Debug.Log(string.Format("[<color=yellow>DCM</color>] [<color=orange>{0}</color>] {1}", gameObject.name, "Applying Mirror Culling Distances"));
@@ -84,7 +79,6 @@ namespace superbstingray
 				gameObject.GetComponent<SetMirrorCullDistances>().enabled = false;
 
 			} else
-
 			{	// Retry if Mirror Camera Wasn't Initialized 
 				SendCustomEventDelayedSeconds("_MirrorUpdate", 1F);
 			}
