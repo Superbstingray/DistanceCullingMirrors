@@ -26,11 +26,12 @@ namespace superbstingray
 
 		void OnValidate()
 		{
-			// Force Initialize & Set Float Array to 32 Length
+			// Force Initialize Float Array in Editor if it is Null
 			if  (LayerCullDistances == null) { LayerCullDistances = new float[32]; }
 		}
 		public void OnEnable()
 		{
+			// Force Float Array Size
 			if  (LayerCullDistances.Length != 32) { LayerCullDistances = new float[32]; }	
 			SendCustomEvent("_MirrorUpdate");
 		}
