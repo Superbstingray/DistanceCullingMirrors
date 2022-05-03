@@ -27,7 +27,7 @@ namespace Superbstingray
 	[Tooltip("Set Individual Layer Culling Distances")]
 	public float[] LayerCullDistances;
 
-    private Camera selfCamera;
+	private Camera selfCamera;
 	private bool isUpdated;
 
 		public void _EditorCamReset()
