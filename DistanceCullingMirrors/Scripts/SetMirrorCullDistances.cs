@@ -1,10 +1,16 @@
-
+﻿
+using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
-using VRC.SDK3.Components;
-using UdonSharp;
+using VRC.Udon;
+using System;
 
-namespace superbstingray
+#if !COMPILER_UDONSHARP && UNITY_EDITOR
+using UnityEditor;
+using UdonSharpEditor;
+#endif
+
+namespace Superbstingray
 {
 	[UdonBehaviourSyncMode(BehaviourSyncMode.NoVariableSync)]
 	public class SetMirrorCullDistances : UdonSharp.UdonSharpBehaviour 
@@ -24,6 +30,12 @@ namespace superbstingray
 	private GameObject MirrorCamObject;
 	private Camera MirrorCamera;
 	private bool isUpdated;
+
+		public void _EditorMirrorReset()
+		{
+			//Set Float Array to 32 Length
+			LayerCullDistances = new float[32];
+		}
 
 		void OnValidate()
 		{
@@ -75,7 +87,7 @@ namespace superbstingray
 				if (!isUpdated)
 				{
 					// Update MirrorCam Name to Prevent Naming Conflicts
-					MirrorCamObject.name = string.Format("{0}{1}", gameObject.name, "_DCM");
+					MirrorCamObject.name = string.Format("{0}{1}", "DCM_", gameObject.name);
 
 					// Log Mirror Update
 					Debug.Log(string.Format("[<color=yellow>DCM</color>] [<color=orange>{0}</color>] {1}", gameObject.name, "Applying Mirror Culling Distances"));
@@ -95,3 +107,27 @@ namespace superbstingray
 		}
 	} 
 }
+
+#if !COMPILER_UDONSHARP && UNITY_EDITOR
+namespace SetMirrorCullDistances
+{
+	[CustomEditor(typeof(Superbstingray.SetMirrorCullDistances))]
+	public class SetMirrorCullDistancesEditor : Editor
+	{
+		public override void OnInspectorGUI()
+		{
+			if (UdonSharpGUI.DrawDefaultUdonSharpBehaviourHeader(target)) return;
+			EditorGUILayout.Space();
+
+			if (GUILayout.Button(new GUIContent("Update Mirror", "Updates the attached Mirrors Camera")))
+			{
+				Superbstingray.SetMirrorCullDistances Cdst = (Superbstingray.SetMirrorCullDistances)target;
+				Cdst._EditorMirrorReset();
+				Cdst._MirrorUpdate();
+			}
+			EditorGUILayout.Space();
+			base.OnInspectorGUI();
+		}
+	}
+}
+#endif
