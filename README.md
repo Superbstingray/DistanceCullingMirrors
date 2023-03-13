@@ -1,8 +1,5 @@
+# DistanceCullingMirrors [![Licence](https://img.shields.io/github/license/Superbstingray/DistanceCullingMirrors?color=blue&label=License)](https://github.com/Superbstingray/DistanceCullingMirrors/blob/main/LICENSE) [![Releases](https://img.shields.io/github/v/tag/Superbstingray/DistanceCullingMirrors?color=blue&label=Download)](https://github.com/Superbstingray/DistanceCullingMirrors/releases/latest)
 
-
-
-
-# DistanceCullingMirrors
 ### Udon script that exposes additional options for mirrors giving the ability to set distance based culling per layer functioning like an adjustable far clip distance. This will help with creating more optimized mirrors.
 
  ## Requirements
