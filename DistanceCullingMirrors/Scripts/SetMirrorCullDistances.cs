@@ -1,4 +1,4 @@
-﻿
+
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
@@ -16,7 +16,7 @@ namespace Superbstingray
 	public class SetMirrorCullDistances : UdonSharp.UdonSharpBehaviour 
 	{
 	[Tooltip("A Value Of 0 Will Disable Culling Behaviour")]
-	public float PlayerCullingDistance = 10F;
+	public float PlayerCullingDistance = 15F;
 
 	[Tooltip("A Value Of 0 Will Disable Culling Behaviour")]
 	public float PickupCullingDistance = 20F;
@@ -77,13 +77,13 @@ namespace Superbstingray
 				}
 
 				// Set Undefined Layers Distances to OtherCullingDistances
-				for(int i=0; i<32; i++)
+				for(int i = 0; i < 32; i++)
 					if ((LayerCullDistances[i] == 0F)) { LayerCullDistances[i] = OtherCullingDistances; }
 			
 				// Update Camera Culling Properties & Values
 				MirrorCamera.layerCullDistances = LayerCullDistances;
 				MirrorCamera.layerCullSpherical = true;
-
+#if !UNITY_EDITOR
 				if (!isUpdated)
 				{
 					// Update MirrorCam Name to Prevent Naming Conflicts
@@ -98,14 +98,14 @@ namespace Superbstingray
 				//Disable this Behaviour Once Completed
 				gameObject.GetComponent<SetMirrorCullDistances>().enabled = false;
 				isUpdated = true;
-
+#endif
 			} else
 
 			{	// Retry if Mirror Camera Wasn't Initialized 
 				SendCustomEventDelayedSeconds("_MirrorUpdate", 1F);
 			}
 		}
-	} 
+	}
 }
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
