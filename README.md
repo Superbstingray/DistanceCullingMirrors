@@ -32,3 +32,9 @@ https://user-images.githubusercontent.com/74171114/130734783-cf06b9c2-bc15-45b6-
 ## Elements correspond to layer number.
 
 ![ArrayExample](https://user-images.githubusercontent.com/74171114/130407168-28779920-e812-4dd8-a408-860c96179c9f.png)
+
+## Example World
+
+An example world that contains a mirror with this script applied can be found here:
+
+https://vrchat.com/home/world/wrld_6eaf7a85-ffcb-4765-a9b6-c7e435802079
